@@ -1,0 +1,206 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%
+\usepackage{setspace}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{caption}
+%\usepackage{subcaption}
+%\doublespacing
+\singlespacing
+
+\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{relsize}
+\usepackage[cmex10]{amsmath}
+\usepackage{mathtools}
+%\usepackage{amsthm}
+%\interdisplaylinepenalty=2500
+%\savesymbol{iint}
+%\usepackage{txfonts}
+%\restoresymbol{TXF}{iint}
+%\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+%\usepackage{xtab}
+\usepackage{longtable}
+\usepackage{multirow}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{mathtools}
+%\usepackage{eenrc}
+%\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
+\usepackage{listings}
+    \usepackage[latin1]{inputenc}                                 %%
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+    \usepackage{lscape}     
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{karnaugh-map}
+\usepackage{pgf}
+
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+
+
+%\usepackage{stmaryrd}
+
+
+%\usepackage{wasysym}
+%\newcounter{MYtempeqncnt}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+
+%\surroundwithmdframed[width=\columnwidth]{lstlisting}
+\def\inputGnumericTable{}                                 %%
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+ 
+
+\begin{document}
+%
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\vspace{3cm}
+\title{ 
+Staircase Switch through 7447 using avr-gcc
+}
+
+\author{V.MEGHANA}
+
+
+\maketitle
+\tableofcontents
+\bigskip
+%
+%\newpage
+\section{Abstract}
+
+This manual shows the implementation of the Staircase switch using XNOR GATE and 7447.
+\section{\textbf{Components}}
+\input{components}
+\section{Hardware}
+
+\begin{table}[!h]
+\centering
+%\input{./figs/7447_disp.tex}
+\input{7447_disp}
+\caption{}
+\label{table:7447_disp}
+\end{table}
+Connect 7 segment display to 7447 shown in table II
+%\chapter{Tables}
+\begin{table}[ht]
+\centering
+\scalebox{2}{
+\begin{tabular}{|l|c|r|}
+\hline
+Input & 0 & 1\\
+\hline
+Arduino & 8 & 9\\
+\hline
+
+\end{tabular}}
+\caption{}
+\label{tab:first table}
+\end{table}
+\section{Procedure}
+
+1. Connect the circuit as per Table 2\\
+2.Connect A pin of 7447 to D2.\\
+3. Connect B,C and D pins of 7447 to GND.\\
+4. Vary the D8 and D9 and observe the output 
+accordingly in the seven segment display.
+
+\begin{figure}[!h]
+\begin{center}
+\resizebox {0.5\columnwidth} {!} {
+%\input{./figs/sevenseg.tex}
+\input{sevenseg}
+}
+\end{center}
+\caption{7 segment display}
+\label{fig:sevenseg}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=3in]{ic7447.png}
+    \caption{7447}
+    \label{fig:circuit}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=3in]{xnor.jpeg}
+    \caption{Switches OFF-ON}
+    \label{fig:circuit}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=4in]{Staircase.jpeg}
+    \caption{Staircase Switch when both are on}
+    \label{fig:circuit}
+\end{figure}
+
+
+\begin{table}[ht]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+ & \textbf{W} & \textbf{X} & \textbf{Z} \\ \hline
+\textbf{0} & 0 & 0 & 1 \\ \hline
+\textbf{1} & 0 & 1 & 0 \\ \hline
+\textbf{2} & 1 & 0 & 0 \\ \hline
+\textbf{3} & 1 & 1 & 1 \\ \hline
+\end{tabular}%
+}
+\caption{Truth table}
+\label{Truth table}
+\end{table}
+\section{Code}
+
+\textbf{Observe the circuit by executing the link provided below.}\\
+
+https://github.com/Meghana9121/FWC/blob/main/avr-gcc
+\end{document}
