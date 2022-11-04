@@ -1,0 +1,193 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+%
+\usepackage{setspace}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{xcolor}
+\usepackage{caption}
+%\usepackage{subcaption}
+%\doublespacing
+\singlespacing
+
+\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{relsize}
+\usepackage[cmex10]{amsmath}
+\usepackage{mathtools}
+%\usepackage{amsthm}
+%\interdisplaylinepenalty=2500
+%\savesymbol{iint}
+%\usepackage{txfonts}
+%\restoresymbol{TXF}{iint}
+%\usepackage{wasysym}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+%\usepackage{xtab}
+\usepackage{longtable}
+\usepackage{multirow}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{enumitem}
+\usepackage{mathtools}
+%\usepackage{eenrc}
+%\usepackage[framemethod=tikz]{mdframed}
+\usepackage{hyperref}
+\usepackage{listings}
+    \usepackage[latin1]{inputenc}                                 %%
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+  %optionally (for landscape tables embedded in another document): %%
+    \usepackage{lscape}     
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{karnaugh-map}
+\usepackage{pgf}
+
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+
+
+%\usepackage{stmaryrd}
+
+
+%\usepackage{wasysym}
+%\newcounter{MYtempeqncnt}
+\DeclareMathOperator*{\Res}{Res}
+%\renewcommand{\baselinestretch}{2}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+
+%\surroundwithmdframed[width=\columnwidth]{lstlisting}
+\def\inputGnumericTable{}                                 %%
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+ 
+
+\begin{document}
+%
+
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}{Example}[section]
+\newtheorem{definition}{Definition}[section]
+%\newtheorem{algorithm}{Algorithm}[section]
+%\newtheorem{cor}{Corollary}
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\vspace{3cm}
+\title{ 
+Staircase Switch through Arm
+}
+
+\author{V.MEGHANA}
+
+
+\maketitle
+\tableofcontents
+\bigskip
+%
+%\newpage
+\section{Abstract}
+
+This manual shows the implementation of the Staircase switch using XNOR GATE .
+\section{\textbf{Components}}
+\input{components}
+
+%\chapter{Tables}
+\begin{table}[ht]
+\centering
+\begin{tabular}{|l|c|c|r|}
+\hline
+Input & Gnd & Vcc & led\\
+\hline
+Arm & 4 & 5 & 22\\
+\hline
+\end{tabular}
+\caption{}
+\label{tab:first table}
+\end{table}
+\section{Description}
+
+1. Connect the circuit as per Table I\\
+2. Vary the 4 and 5 of ESP32 and observe the output 
+accordingly in the LED.
+
+\section{Procedure}
+\raggedright 1.After executing the following code using make, a binary file is generated with .bin extension in the output directory. \vspace{2mm} \\ 
+\raggedright 2.Now from the termux, using scp protocol, send the generated bin file to the laptop. \\ \vspace{2mm}
+\raggedright 3.There we are supposed to flash the .bin file into the ARM through the terminal.\\ \vspace{2mm}
+\raggedright 4.After flashing, reset the Vaman board.\\ \vspace{2mm}
+\raggedright 5.Make connections between the LED and ARM board using jumper wires. \\ \vspace{2mm}
+\raggedright 6.Now check the output with reference to the truth table present above.
+
+
+%\begin{figure}
+ %   \centering
+  % \caption{7447}
+   % \label{fig:circuit}
+%\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=2in]{xnor.jpeg}
+    \caption{Switches OFF-ON}
+    \label{fig:circuit}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=2in]{Staircase.jpeg}
+    \caption{Staircase Switch when both are on}
+    \label{fig:circuit}
+\end{figure}
+
+
+\begin{table}[ht]
+\centering
+%\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|l|}
+\hline
+ & \textbf{W} & \textbf{X} & \textbf{Z} \\ \hline
+\textbf{0} & 0 & 0 & 1 \\ \hline
+\textbf{1} & 0 & 1 & 0 \\ \hline
+\textbf{2} & 1 & 0 & 0 \\ \hline
+\textbf{3} & 1 & 1 & 1 \\ \hline
+\end{tabular}%
+%}
+\caption{Truth table}
+\label{Truth table}
+\end{table}
+\section{Code}
+
+\textbf{Observe the circuit by executing the link provided below.}\\
+\begin{center}
+\fbox{\parbox{8.5cm}{\url{https://github.com/Meghana9121/FWC/Arm}}}
+\end{center}
+%https://github.com/Meghana9121/FWC/Arm
+\end{document}
